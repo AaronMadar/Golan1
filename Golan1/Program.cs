@@ -127,6 +127,7 @@ namespace Golan1
             Console.WriteLine("To see the Average PRESS F");
             Console.WriteLine("To see the length PRESS G");
             Console.WriteLine("To see the sum PRESS H");
+            Console.WriteLine("To enter a new list PRESS L");
 
             EntryMenu();
         }
@@ -184,6 +185,11 @@ namespace Golan1
 
                     case "H":
                         PrintTheSum();
+                        break;
+
+
+                    case "L":
+                        ClearList();
                         break;
 
 
@@ -270,6 +276,12 @@ namespace Golan1
         static void PrintTheSum()
         {
             Console.WriteLine("The sum of all numbers of the list is : " + numberList.Sum());
+        }
+
+        static void ClearList()
+        {
+            numberList.Clear();
+            WelcomeAndCollect();
         }
 
 
