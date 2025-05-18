@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,7 +10,7 @@ namespace Golan1
 {
     internal class Program
     {
-        static List<int> numberList = new List<int>();
+        static List<float> numberList = new List<float>();
 
         static bool run = true;
 
@@ -19,32 +18,19 @@ namespace Golan1
 
         static void Main(string[] args)
         {
-
-
             WelcomeAndCollect();
-
-
-
-
-
-
         }
 
         static void WelcomeAndCollect()
         {
-
             while (run)
             {
                 TitleWelcome();
                 string entry = Console.ReadLine().ToUpper();
 
                 VerifyAndCollect(entry);
-
             }
-
-
         }
-
 
         static void TitleWelcome()
         {
@@ -52,39 +38,25 @@ namespace Golan1
             {
                 Console.WriteLine("Please enter 3 positif numbers : " + " " + ExitOption());
             }
-
             else if (numberList.Count == 1)
             {
                 Console.WriteLine("Please enter 2 positif numbers: " + " " + ExitOption());
-
             }
-
             else if (numberList.Count == 2)
             {
                 Console.WriteLine("Please enter 1 positif number: " + " " + ExitOption());
-
             }
-
             else if (numberList.Count >= 3)
             {
-
                 Console.WriteLine("Enter another number: " + " " + ExitOption());
                 Console.WriteLine("For the MENU press M ");
-
             }
-
-
-
         }
 
         static string ExitOption()
         {
             return "Press X to Exit ";
         }
-
-
-
-
 
         static void VerifyAndCollect(string entry)
         {
@@ -93,29 +65,20 @@ namespace Golan1
                 Console.WriteLine("GoodBye !");
                 run = false;
             }
-
             else if (entry == "M" && numberList.Count >= 3)
             {
                 TheCalculMenu();
                 run = false;
             }
-
-            else if (!int.TryParse(entry, out int value) || value <= 0)
+            else if (!float.TryParse(entry, out float value) || value <= 0)
             {
                 Console.WriteLine("Just Positive Numbers are Allowed !");
-
             }
-
             else
             {
-                numberList.Add((int)value);
+                numberList.Add(value);
             }
-
-
-
-
         }
-
 
         static void TheCalculMenu()
         {
@@ -134,11 +97,8 @@ namespace Golan1
 
         static void EntryMenu()
         {
-
             while (run2)
             {
-
-
                 string entryMenu = Console.ReadLine().ToUpper();
 
                 switch (entryMenu)
@@ -146,103 +106,56 @@ namespace Golan1
                     case "A":
                         PrintList();
                         break;
-
-
                     case "B":
                         PrintListReversed();
                         break;
-
-
-
                     case "C":
                         PrintListSorted();
                         break;
-
-
                     case "D":
                         PrintTheBiggestNumber();
                         break;
-
-
-
-
                     case "E":
                         PrintLittleNumber();
-
                         break;
-
-
                     case "F":
                         PrintTheAverage();
                         break;
-
-
-
                     case "G":
                         PrintTheLength();
                         break;
-
-
                     case "H":
                         PrintTheSum();
                         break;
-
-
                     case "L":
                         ClearList();
                         break;
-
-
-
                     case "X":
                         Console.WriteLine("GoodBye! ");
                         run2 = false;
                         break;
-
-
                     default:
                         Console.WriteLine("Please press a valid option!");
-
-
                         break;
-
-
-
-
-
-
-
-
-
-
-
-
                 }
             }
-
         }
-
-
 
         static void PrintList()
         {
-
             Console.WriteLine("The numbers in the list are " + string.Join(",", numberList));
-
         }
 
         static void PrintListReversed()
         {
-            var reversed = new List<int>(numberList);
+            var reversed = new List<float>(numberList);
             reversed.Reverse();
             Console.WriteLine("The List Reversed is :" + string.Join(",", reversed));
         }
 
-
-
         static void PrintListSorted()
         {
-            var sorted = new List<int>(numberList);
+            var sorted = new List<float>(numberList);
             sorted.Sort();
             Console.WriteLine("The list Sorted is : " + string.Join(",", sorted));
         }
@@ -259,13 +172,12 @@ namespace Golan1
 
         static void PrintTheAverage()
         {
-
-            int sumi = 0;
-            foreach (int n in numberList)
+            float sum = 0;
+            foreach (float n in numberList)
             {
-                sumi += n;
+                sum += n;
             }
-            Console.WriteLine("The average is : " + (sumi / numberList.Count));
+            Console.WriteLine("The average is : " + (sum / numberList.Count));
         }
 
         static void PrintTheLength()
@@ -283,19 +195,5 @@ namespace Golan1
             numberList.Clear();
             WelcomeAndCollect();
         }
-
-
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-        
